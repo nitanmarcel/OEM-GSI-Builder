@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Load Configuration
         uses: falti/dotenv-action@v0.2.5
+        id: config
         with:
           path: config.env
       - name: Download Tools
@@ -22,25 +23,22 @@ jobs:
           git clone --recurse-submodules ${{ steps.config.outputs.tool_repo }}
       - name: Set Up Requirements
         run: |
-          bash ErfanGSIs/setup.py
+          bash ErfanGSIs/setup.sh
       - name: Pre-Build
         run: |
           sed -i '$d' ErfanGSIs/url2GSI.sh
       - name: Build AB and AOnly
         if: ${{ steps.config.outputs.output_type == 'all' }}
         run: |
-          sudo ./ErfanGSIs/url2GSI.sh ${{ steps.config.outputs.url }} ${{ steps.config.outputs.firmware_type }}
+          sudo ./ErfanGSIs/url2GSI.sh ${{ steps.config.outputs.url }} ${{ steps.config.outputs.firmware_type }} ${{ steps.config.outputs.extra_args }}
       - name: Build AB
         if: ${{ steps.config.outputs.output_type == 'ab' }}
         run: |
-          sudo ./ErfanGSIs/url2GSI.sh ${{ steps.config.outputs.url }} ${{ steps.config.outputs.firmware_type }} --ab
+          sudo ./ErfanGSIs/url2GSI.sh ${{ steps.config.outputs.url }} ${{ steps.config.outputs.firmware_type }} --ab ${{ steps.config.outputs.extra_args }}
       - name: Build AOnly
         if: ${{ steps.config.outputs.output_type == 'a' }}
         run: |
-          sudo ./ErfanGSIs/url2GSI.sh ${{ steps.config.outputs.url }} ${{ steps.config.outputs.firmware_type }} --aonly
-      - name: Post-Build
-        run:
-          cat output/*.txt
+          sudo ./ErfanGSIs/url2GSI.sh ${{ steps.config.outputs.url }} ${{ steps.config.outputs.firmware_type }} --aonly ${{ steps.config.outputs.extra_args }}
       - name: Pre-Upload
         run: |
           mkdir build/

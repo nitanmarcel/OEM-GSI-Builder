@@ -28,6 +28,7 @@ Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://git
   FIRMWARE\_TYPE| Firmware type (eg: Pixel).
   OUTPUT\_TYPE| Build type. Can be: "all" to build AB and AOnly; "ab" to build just AB; "a" to build just AOnly.
   SOURCEFORGE\_DIR| The directory on sourceforge. See: https://sourceforge.net/p/forge/documentation/SFTP/#for-managing-file-releases
+  EXTRA\_ARGS| Extra arguments to pass to url2GSI.sh script.
 
 # SourceForge Configuration
 
