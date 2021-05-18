@@ -34,7 +34,7 @@ Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://git
   FIRMWARE\_TYPE| Firmware type (eg: Pixel).
   OUTPUT\_TYPE| Build type. Can be: "all" to build AB and AOnly; "ab" to build just AB; "a" to build just AOnly.
   SOURCEFORGE\_DIR| The directory on sourceforge. See: https://sourceforge.net/p/forge/documentation/SFTP/#for-managing-file-releases
-  TG\_CHAT\_IDS| List of telegram chat id separated by space where to send informations about the latest builds. Set to 0 to disable telegram notifications.
+  TG\_CHAT\_IDS| List of telegram chat id separated by space where to send info about the latest builds. Set to 0 to disable telegram notifications.
   SOURCEFORGE\_URL| Url to the sourceforge directory where the builds are uploaded. Used if telegram notifications are enabled.
   EXTRA\_ARGS| Extra arguments to pass to url2GSI.sh script.
 
@@ -46,7 +46,7 @@ Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://git
 :-----:|:-----:
 USERNAME | SourceForge username.
 PASSWORD | SourceForge password.
-TG_BOT_TOKEN | Telegram Bot Token to send notification messages to. Used only if telegram notifications are enabled
+TG_BOT_TOKEN | Telegram Bot Token to send notification messages to. Used only if telegram notifications are enabled.
 
 # Donate
 
