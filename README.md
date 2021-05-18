@@ -1,4 +1,4 @@
-Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs/blob/master/setup.sh) then upload to sourceforge.
+Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs) then upload to sourceforge.
 
 # Requirements
 - A little understanding on how to use ErfanGSIs tool.
