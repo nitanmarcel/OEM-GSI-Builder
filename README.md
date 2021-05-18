@@ -1,5 +1,11 @@
 Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://github.com/erfanoabdi/ErfanGSIs) then upload to sourceforge.
 
+# Features
+- Easy to use.
+- Customizable. Chose your own custom ErfanGSIs tool, chose build type (A only or AB or both), and many more.
+- Deploy ported GSI to sourceforge.
+- Send notifications on telegram with informations about the latest build.
+
 # Requirements
 - A little understanding on how to use ErfanGSIs tool.
 - A SourceForge account and project.
@@ -21,13 +27,15 @@ Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://git
 # ErfanGSIs Configuration
 > All the settings for Erfan's tool is available by editing the config.env file.
 
-**Name**|**Description**
-:-----:|:-----:
+**Name**|**Description**|**Required**
+:-----:|:-----:|:-----:
   TOOL\_REPO| Repository from where to clone ErfanGSIs tool. Only change this if you are using a custom one.
   URL| Firmware download link or path on the repo.
   FIRMWARE\_TYPE| Firmware type (eg: Pixel).
   OUTPUT\_TYPE| Build type. Can be: "all" to build AB and AOnly; "ab" to build just AB; "a" to build just AOnly.
   SOURCEFORGE\_DIR| The directory on sourceforge. See: https://sourceforge.net/p/forge/documentation/SFTP/#for-managing-file-releases
+  TG\_CHAT\_IDS| List of telegram chat id separated by space where to send informations about the latest builds. Set to 0 to disable telegram notifications.
+  SOURCEFORGE\_URL| Url to the sourceforge directory where the builds are uploaded. Used if telegram notifications are enabled.
   EXTRA\_ARGS| Extra arguments to pass to url2GSI.sh script.
 
 # SourceForge Configuration
@@ -36,8 +44,9 @@ Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://git
 
 **Name** | **Description**
 :-----:|:-----:
-USERNAME | your SourceForge username.
-PASSWORD | your SourceForge password.
+USERNAME | SourceForge username.
+PASSWORD | SourceForge password.
+TG_BOT_TOKEN | Telegram Bot Token to send notification messages to.
 
 # Donate
 

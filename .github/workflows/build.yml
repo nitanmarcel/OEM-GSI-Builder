@@ -53,3 +53,25 @@ jobs:
           ftp-password: ${{ secrets.PASSWORD }}
           local-dir: 'build/'
           git-ftp-args: --insecure
+      - name: Telegram Notify
+        if: ${{ steps.config.outputs.tg_chat_ids != 0 }}
+        run: |
+          BOT_TOKEN=${{ secrets.TG_BOT_TOKEN }}
+          CHAT_IDS=${{ steps.config.outputs.tg_chat_ids }}
+          TG_URL="https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
+
+          chatids=("$CHAT_IDS")
+
+          for chat in "${chatids[@]}"; do
+            TYPE=${{ steps.config.outputs.firmware_type }}
+            OUTPUT=${{ steps.config.outputs.output_type }}
+            BASE=${{ steps.config.outputs.url }}
+            SOURCEFORGE=${{ steps.config.outputs.sourceforge_url }}
+            for file in build/*.txt; do
+              filename=$(basename -- "$file")
+              sed -i "1s/^/Name: ${filename%.*}\n/" "$file"
+              printf "\n\nBase Firmware Link: $BASE" >> "$file"
+              printf "\n\nDownload Link: $SOURCEFORGE" >> "$file"
+              curl -s -d "chat_id=$chat"  --data-urlencode text@$file "$TG_URL"
+            done
+          done
