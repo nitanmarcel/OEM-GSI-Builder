@@ -46,7 +46,7 @@ Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://git
 :-----:|:-----:
 USERNAME | SourceForge username.
 PASSWORD | SourceForge password.
-TG_BOT_TOKEN | Telegram Bot Token to send notification messages to.
+TG_BOT_TOKEN | Telegram Bot Token to send notification messages to. Used only if telegram notifications are enabled
 
 # Donate
 
