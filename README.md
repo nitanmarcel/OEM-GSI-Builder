@@ -17,12 +17,12 @@ Port OEM ROMs to project treble using github actions and [ErfanGSIs](https://git
 - Setup SourceForge credentials in github secrets. See [SourceForge Configuration](#SourceForge-Configuration).
 - Go to actions tab, enable workflows.
 - Go to Actions tab again, click and run workflow manually.
-- It should take around 30 minutes, 1 hour to succesfully build and upload your builds to sourceforge.com.
+- It should take around 10 to succesfully build and upload your builds to sourceforge.com.
 
 # How to update
 - Change ErfanGSIs configuration in config.env. [ErfanGSIs Configuration](#ErfanGSIs-Configuration).
 - Go to actions tab, click and run workflow manually.
-- It should take around 30 minutes, 1 hour to succesfully build and upload your builds to sourceforge.com.
+- It should take around 10 to succesfully build and upload your builds to sourceforge.com.
 
 # ErfanGSIs Configuration
 > All the settings for Erfan's tool is available by editing the config.env file.
