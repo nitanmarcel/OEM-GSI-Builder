@@ -32,7 +32,7 @@ jobs:
       - name: Setup ErfanGSIs Tools
         run: |
           git clone --recurse-submodules "${{ steps.config.outputs.tool_repo }}"
-          bash ErfanGSIs/setup.sh
+          sudo bash ErfanGSIs-TrebleExp/setup.sh
           sed -i '$d' ErfanGSIs/url2GSI.sh
       - name: Build A/B
         if: ${{ steps.config.outputs.output_type == 'all' }}
