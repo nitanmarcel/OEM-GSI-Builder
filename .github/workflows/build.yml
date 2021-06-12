@@ -33,19 +33,19 @@ jobs:
         run: |
           git clone --recurse-submodules "${{ steps.config.outputs.tool_repo }}"
           sudo bash ErfanGSIs-TrebleExp/setup.sh
-          sed -i '$d' ErfanGSIs/url2GSI.sh
+          sed -i '$d' ErfanGSIs-TrebleExp/url2GSI.sh
       - name: Build A/B
         if: ${{ steps.config.outputs.output_type == 'all' }}
         run: |
-          sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" "${{ steps.config.outputs.extra_args }}"
+          sudo ./ErfanGSIs-TrebleExp/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" "${{ steps.config.outputs.extra_args }}"
       - name: Build AB
         if: ${{ steps.config.outputs.output_type == 'ab' }}
         run: |
-          sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --ab ${{ steps.config.outputs.extra_args }}
+          sudo ./ErfanGSIs-TrebleExp/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --ab ${{ steps.config.outputs.extra_args }}
       - name: Build AOnly
         if: ${{ steps.config.outputs.output_type == 'a' }}
         run: |
-          sudo ./ErfanGSIs/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --aonly ${{ steps.config.outputs.extra_args }}
+          sudo ./ErfanGSIs-TrebleExp/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --aonly ${{ steps.config.outputs.extra_args }}
       - name: Pre-Upload
         run: |
           mkdir build/
