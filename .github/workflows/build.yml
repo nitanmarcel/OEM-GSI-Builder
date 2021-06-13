@@ -49,9 +49,9 @@ jobs:
       - name: Pre-Upload
         run: |
           mkdir build/
-          sudo mv ErfanGSIs/output/*.img build/
+          sudo mv ErfanGSIs-TrebleExp/output/*.img build/
           gzip -r build/
-          sudo mv ErfanGSIs/output/*.txt build/
+          sudo mv ErfanGSIs-TrebleExp/output/*.txt build/
       - name: Setup SSH
         uses: fastai/workflows/ssh@master
         with:
