@@ -41,11 +41,11 @@ jobs:
       - name: Build AB
         if: ${{ steps.config.outputs.output_type == 'ab' }}
         run: |
-          sudo ./ErfanGSIs-TrebleExp/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --ab ${{ steps.config.outputs.extra_args }}
+          sudo ./ErfanGSIs-TrebleExp/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --ab ${{ steps.config.outputs.extra_args }} -d
       - name: Build AOnly
         if: ${{ steps.config.outputs.output_type == 'a' }}
         run: |
-          sudo ./ErfanGSIs-TrebleExp/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --aonly ${{ steps.config.outputs.extra_args }}
+          sudo ./ErfanGSIs-TrebleExp/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --aonly ${{ steps.config.outputs.extra_args }} -d
       - name: Pre-Upload
         run: |
           mkdir build/
