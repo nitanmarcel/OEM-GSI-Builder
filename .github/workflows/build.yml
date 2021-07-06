@@ -32,26 +32,26 @@ jobs:
       - name: Setup ErfanGSIs Tools
         run: |
           git clone --recurse-submodules "${{ steps.config.outputs.tool_repo }}"
-          sudo bash ErfanGSIs-TrebleExp/setup.sh
-          sed -i '$d' ErfanGSIs-TrebleExp/url2GSI.sh
+          sudo bash ErfanGSIs-TrebleExperience/setup.sh
+          sed -i '$d' ErfanGSIs-TrebleExperience/url2GSI.sh
       - name: Build A/B
         if: ${{ steps.config.outputs.output_type == 'all' }}
         run: |
-          sudo ./ErfanGSIs-TrebleExp/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" "${{ steps.config.outputs.extra_args }}"
+          sudo ./ErfanGSIs-TrebleExperience/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" "${{ steps.config.outputs.extra_args }}"
       - name: Build AB
         if: ${{ steps.config.outputs.output_type == 'ab' }}
         run: |
-          sudo ./ErfanGSIs-TrebleExp/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --ab ${{ steps.config.outputs.extra_args }} -d
+          sudo ./ErfanGSIs-TrebleExperience/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --ab ${{ steps.config.outputs.extra_args }} -d
       - name: Build AOnly
         if: ${{ steps.config.outputs.output_type == 'a' }}
         run: |
-          sudo ./ErfanGSIs-TrebleExp/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --aonly ${{ steps.config.outputs.extra_args }} -d
+          sudo ./ErfanGSIs-TrebleExperience/url2GSI.sh "${{ steps.config.outputs.url }}" "${{ steps.config.outputs.firmware_type }}" --aonly ${{ steps.config.outputs.extra_args }} -d
       - name: Pre-Upload
         run: |
           mkdir build/
-          sudo mv ErfanGSIs-TrebleExp/output/*.img build/
+          sudo mv ErfanGSIs-TrebleExperience/output/*.img build/
           gzip -r build/
-          sudo mv ErfanGSIs-TrebleExp/output/*.txt build/
+          sudo mv ErfanGSIs-TrebleExperience/output/*.txt build/
       - name: Setup SSH
         uses: fastai/workflows/ssh@master
         with:
