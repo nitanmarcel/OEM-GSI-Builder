@@ -77,10 +77,10 @@ jobs:
             SOURCEFORGE="${{ steps.config.outputs.sourceforge_url }}"
             for file in build/*.txt; do
               filename=$(basename -- "$file")
-              printf "CherishOS 2.7.5 GSI"
+              sed -i "1s/^/Name: ${filename%.*}\n/" "$file"
+              printf "CherishOS 2.7.5 GSI (Extra VNDK)"
               printf "Ported from Redmi Note 4"
               printf "\n\nInformation:"
-              sed -i "1s/^/Name: ${filename%.*}\n/" "$file"
               printf "\n\nBase Firmware Link: $BASE" >> "$file"
               printf "\n\nDownload Link: $SOURCEFORGE" >> "$file"
               curl -s -d "chat_id=$chat"  --data-urlencode text@$file "$TG_URL"
