@@ -77,6 +77,8 @@ jobs:
             SOURCEFORGE="${{ steps.config.outputs.sourceforge_url }}"
             for file in build/*.txt; do
               filename=$(basename -- "$file")
+              printf "\n\n <Rom Name> <Rom Version> GSI
+              printf "Ported from <Device>
               sed -i "1s/^/Name: ${filename%.*}\n/" "$file"
               printf "\n\nBase Firmware Link: $BASE" >> "$file"
               printf "\n\nDownload Link: $SOURCEFORGE" >> "$file"
