@@ -79,7 +79,7 @@ jobs:
               filename=$(basename -- "$file")
               printf "CherishOS 2.7.5 GSI"
               printf "Ported from Redmi Note 4"
-              printf "\n\nInformation:
+              printf "\n\nInformation:"
               sed -i "1s/^/Name: ${filename%.*}\n/" "$file"
               printf "\n\nBase Firmware Link: $BASE" >> "$file"
               printf "\n\nDownload Link: $SOURCEFORGE" >> "$file"
